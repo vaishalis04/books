@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .navbar{
+      background-color: #00A4C7;
+    }
+      .register{
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        background-color: #05A3C4;
+        /* background: linear-gradient(135deg, #4F4555, rgb(84, 23, 23)); */
+      }
+      .container{
+        max-width: 1200px;
+        width: 100%;
+        background-color: #fff;
+        padding: 9px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+      }
+      .container .title{
+        font-size: 25px;
+        font-weight: 500;
+        position: relative;
+      }
+      .container .title::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 30px;
+        border-radius: 5px;
+        background-color: #05A3C4;
+
+        /* background: linear-gradient(135deg, #4F4555, rgb(84, 23, 23)); */
+      }
+      .content form .user-details{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0 12px 0;
+      }
+      form .user-details .input-box{
+        margin-bottom: 15px;
+        width: calc(100% / 2 - 20px);
+      }
+      form .input-box span.details{
+        display: block;
+        font-weight: 500;
+        margin-bottom: 5px;
+      }
+      .user-details .input-box input{
+        height: 45px;
+        width: 100%;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        padding-left: 15px;
+        border: 1px solid #ccc;
+        border-bottom-width: 2px;
+        transition: all 0.3s ease;
+      }
+      .user-details .input-box input:focus,
+      .user-details .input-box input:valid{
+        border-color: #4F4555;
+      }
+     
+       form .category{
+         display: flex;
+         width: 80%;
+         margin: 14px 0 ;
+         justify-content: space-between;
+       }
+       form .category label{
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+       }
+       
+       form .button{
+         height: 45px;
+         margin: 35px 0
+       }
+       form .button input,select{
+         height: 100%;
+         width: 100%;
+         border-radius: 5px;
+         border: none;
+         color: black;
+         font-size: 18px;
+         font-weight: 500;
+         letter-spacing: 1px;
+         cursor: pointer;
+         transition: all 0.3s ease;
+        background-color: #05A3C4;
+
+         /* background: linear-gradient(135deg, #706378, rgb(141, 57, 57)); */
+       }
+       /* form .button input:hover,select{
+        
+        background: linear-gradient(-135deg, #706378, rgb(141, 57, 57));
+        } */
+        </style>
+</head>
+<body>
+   <div class="navbar"><%- include("partials/nav") %></div> 
+    <div class="register">
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+          <form action="/register" method="post">
+            <div class="user-details">
+              <div class="input-box">
+                <span class="details">Author</span>
+                <input type="text" placeholder="Enter author" name="author" >
+              </div>
+              
+              <select name="country">
+                <option value="">Select Country</option>
+                <% countryNames.forEach(function(c){%>
+                  <option value="<%= c%>">
+                      <%= c%>
+                  </option>
+                  <%})%> 
+              </select>
+              <div class="input-box">
+                <span class="details">ImageLink</span>
+                <input type="text" placeholder="Enter imagelink" name="imageLink" 
+                >
+              </div>
+              <select name="language">
+                <option value="">Select Language</option>
+                <% languageNames.forEach(function(l){ %>
+                  <option value="<%= l.name%>">
+                      <%= l.name%>
+                  </option>
+                  <% }) %>
+              </select>
+              <div class="input-box">
+                <span class="details">Link</span>
+                <input type="text" placeholder="Enter link" name="link" >
+              </div>
+              <div class="input-box">
+                <span class="details">Pages</span>
+                <input type="number" placeholder="Number of pages" name="pages">
+              </div>
+              <div class="input-box">
+                <span class="details">Title</span>
+                <input type="text" placeholder="Enter your title" name="title">
+              </div>
+              <div class="input-box">
+                <span class="details">Year</span>
+                <input type="number" placeholder="Enter number of years" name="year">
+              </div>
+            </div>
+            
+            <div class="button">
+              <input type="submit" value="Register">
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
